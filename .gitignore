@@ -1,0 +1,15 @@
+*.mp4
+*.mid
+*.html
+*.svg
+*.png
+*.midi
+package-lock.json
+*.txt
+.shitballspiano
+/svgout
+/node_modules
+/Lib
+/frames
+/.vscode
+/ohlord

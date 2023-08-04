@@ -1,0 +1,36 @@
+{
+  "name": "ffmpegshit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "helpme.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nut-tree/nut-js": "^3.1.2",
+    "@tonejs/midi": "^2.0.28",
+    "canny-edge-detector": "^1.0.0",
+    "canvas": "^2.11.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "image-js": "^0.35.4",
+    "kmeansjs": "^0.0.3",
+    "midi-parser-js": "^4.0.4",
+    "pngjs": "^6.0.0",
+    "points-on-path": "^0.2.1",
+    "potrace": "^2.1.8",
+    "puppeteer": "^20.9.0",
+    "raphael": "^2.3.0",
+    "screenshot-desktop": "^1.12.7",
+    "sharp": "^0.31.2",
+    "svg-parser": "^2.0.4",
+    "svg-path-parser": "^1.1.0",
+    "svg-path-properties": "^1.2.0",
+    "svgo": "^3.0.2",
+    "tone": "^14.7.77",
+    "ws": "^8.12.0",
+    "ytdl-core": "^4.11.2"
+  }
+}
