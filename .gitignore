@@ -6,7 +6,8 @@
 *.midi
 package-lock.json
 *.txt
-.shitballspiano
+*.shitballspiano
+*.🖕🎹
 /svgout
 /node_modules
 /Lib
