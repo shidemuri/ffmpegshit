@@ -9,6 +9,8 @@ local input = 'input.shitballspiano'
 
 assert(isfile(input),'cadê a porra do arquivo')
 pcall(setfpscap, 9999)
+--dps eu taco artificial heartbeat pra n precisar aumentar o fps
+--o wait n é tão preciso em fps mais baixos
 
 local http = game:GetService('HttpService')
 local ran,data = pcall(http.JSONDecode,http,readfile(input))
