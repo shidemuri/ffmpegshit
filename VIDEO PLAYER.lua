@@ -72,20 +72,14 @@ getgenv().STOP = function() stop = true end
 game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
 local dt = 0
 for _,frame in ipairs(data) do
-    --local parsed = frame:gsub('%|','\n')
-    --[[for z=1,#frame do                      REPLACED DUE TO EXTREME INEFFICIENCE (60fps -> 10 fps)
-        local char = frame:sub(z,z)
-        char = char == '|' and '\n' or char
-        --char = char == '0' and "⬛" or char == "1" and "⬜"
-        parsed = parsed .. char
-    end]]
+    local parsed = frame:gsub('%|','\n')
     if stop == true then
         break;
     end
     if thing then
-        slave:FireServer('PlaySong',('\n'):rep(10)..parsed..'\n\n- padero#3957 / padero (@NeighborlyBipbip) / github.com/shidemuri\n\n')
+        slave:FireServer('PlaySong',('\n'):rep(10)..parsed..'\n\n\n\n')
     else
-        slave:FireServer(('\n'):rep(10)..parsed..'\n\n- padero#3957 / padero (@NeighborlyBipbip) / github.com/shidemuri\n')
+        slave:FireServer(('\n'):rep(10)..parsed..'\n\n\n')
     end
     ArtificialHB.Event:Wait()
 end

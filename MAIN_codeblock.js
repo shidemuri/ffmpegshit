@@ -34,9 +34,9 @@ function eq(a, b) {
 
 const ss = strgen()
 console.log('Preparing video...')
-const ff = new ffmpeg(path.resolve(__dirname,`./input.mp4`))
+const ff = new ffmpeg(path.resolve(__dirname,`./input14.mp4`))
 ff.noAudio()
-ff.size('60x30')
+ff.size('50x30')
 ff.fps(20)
 //ff.format('mp4')
 ff.addOptions(['-crf 18','-hide_banner'])
@@ -60,8 +60,8 @@ ff.on('end', async()=>{
                         let idx2 = (this.width * (y+1) + x) << 2;
                         for(const [k,v] of Object.entries(blocks)){
                             if(eq(v,[
-                                Number(!((this.data[idx]+this.data[idx+1]+this.data[idx+2])/3<200)),
-                                Number(!((this.data[idx2]+this.data[idx2+1]+this.data[idx2+2])/3<200)),
+                                Number(!((this.data[idx]+this.data[idx+1]+this.data[idx+2])/3<170)),
+                                Number(!((this.data[idx2]+this.data[idx2+1]+this.data[idx2+2])/3<170)),
                             ])) thing += k
                         }
                     }

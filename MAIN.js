@@ -85,7 +85,7 @@ function strgen(){
 
 const ss = strgen()
 console.log('Preparing video...')
-const ff = new ffmpeg(path.resolve(__dirname,`./input6.mp4`))
+const ff = new ffmpeg(path.resolve(__dirname,`./input14.mp4`))
 ff.noAudio()
 ff.size('68x38')//ff.size('90x45')//
 ff.fps(20)

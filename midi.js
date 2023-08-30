@@ -8,20 +8,20 @@
 
 const TRANSPOSITION = 1         //how many pitches to shift down
 const NOTES_DOWN = 0           //how many notes to round down (stacks with transposition)
-const IGNORE_BLACK_NOTES = true
+const IGNORE_BLACK_NOTES = false
 const ROUND_BLACK_NOTES = false
 
 const Midi = require('@tonejs/midi').Midi
 const Tone = require('tone')
 const fs = require('fs')
-const owo = new Midi(fs.readFileSync('lyre_fd.mid'))
+const owo = new Midi(fs.readFileSync('freedomdive.mid'))
 const base = {"_":"piano -https://paderos-neko.store"}
 
 let scales = [
-    /*'C1',  'C#1', 'D1',  'D#1', 'E1',  'F1',  'F#1',
+    'C1',  'C#1', 'D1',  'D#1', 'E1',  'F1',  'F#1',
     'G1',  'G#1', 'A1',  'A#1', 'B1',  'C2',
     'C#2', 'D2',  'D#2', 'E2',  'F2',  'F#2', 'G2',
-    'G#2', 'A2',  'A#2', 'B2',  */'C3',  'C#3',
+    'G#2', 'A2',  'A#2', 'B2', 'C3',  'C#3',
     'D3',  'D#3', 'E3',  'F3',  'F#3', 'G3',  'G#3',
     'A3',  'A#3', 'B3',   'C4',  'C#4', 'D4',
     'D#4', 'E4',  'F4',  'F#4', 'G4',  'G#4', 'A4',
