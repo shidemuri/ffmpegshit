@@ -17,6 +17,7 @@
     } */
     #pai {
         display: flex;
+        flex-wrap:wrap;
     }
     * {
         font-family: 'Roboto', sans-serif;
@@ -34,7 +35,7 @@
     h2 {
         margin: 15px;
         background-color: yellow;
-        border-radius: 2px;
+        border-radius: 4px;
         padding:2px;
         padding-left:10px;
         text-align: left;
@@ -45,8 +46,11 @@
     }
     .preco {
         background-color: yellow;
-        border-radius: 2px;
-        padding:1px;
+        border-radius: 3px;
+        padding:4px;
+        padding-left: 5px;
+        padding-right: 5px;
+        
     }
     img {
         user-select: none;
@@ -55,36 +59,120 @@
         border: 1px solid grey;
         border-radius: 5px;
         padding:5px;
+        font-size: 14px;
+        user-select: none;
+    }
+    .comprar{
         width:35%;
         background-color: greenyellow;
         font-weight: bold;
         font-size: 18px;
-        user-select: none;
+    }
+    .pe {
+    }
+
+
+
+    header {
+        height: 50px;
+        text-align: center;
+        padding:auto;
+        background-color: blue;
+        color: white;
+    }
+    aside {
+        width: 100px;
+        height:800px;
+        background-color: red;
+        word-wrap: break-word;
+    }
+    content {
+        width:1100px;
+        height:800px;
+        background-color: green;
+    }
+    footer {
+        height:50px;
+        background-color: silver;
+        text-align: center;
+    }
+    #principal {
+        display: flex;
+    }
+
+    .peidudo {
+        width:100%;
+        margin-bottom:1px;
+    }
+    main {
+        display:block;
+        transition: display 3s;
+    }
+    main.sumiu {
+        display:none;
     }
 </style>
 <body>
-    <div id="pai">
-        <div class="z">
-            <h2>robo legal</h2>
-            <img src="d.png" width="256px">
-            <p>microondas que come arroz e canta</p>
-            <h4><span class="preco"> R$ 0 (shareware) </span></h4>
-            <button onclick="location='http://utau2008.xrea.jp'">comprar</button>
+    
+    <main>
+        <header>
+            AFSCBXHBDGHDGH
+        </header>
+        <div id="principal">
+            <aside>
+                <button class='peidudo' id="legal">
+                   acaboucc onhfghjgf papel
+                </button>
+                <button class='peidudo' id="dois">
+                    n faz mal  -----------------
+                </button>
+                <button class="peitudo" id="g">
+                    sumiu!!!!!!!!!!
+                </button>
+            </aside>
+            <content>
+                <div id="pai">
+                    <div class="z">
+                        <h2>robo legal</h2>
+                        <img src="d.jpg" width="256px">
+                        <p>microondas que come arroz e canta</p>
+                        <h4><span class="preco"> R$ 0 (shareware) </span></h4>
+                        <button id='bosta' class="comprar">comprar</button>
+                    </div>
+                    <div class="z">
+                        <h2>vugnaes sreo</h2>
+                        <img src="https://th.bing.com/th/id/OIP.FmRptuQ16LNJkr4YXklXrQHaEK?w=319&h=180&c=7&r=0&o=5&pid=1.7" width="256px">
+                        <div class = 'pe'>
+                            <p>vugnaes re</p>
+                            <h4><span class="preco"> R$ 0 (vugnaes) </span></h4>
+                            <button id='sreo'class="comprar">comprar</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </content>
         </div>
-        <div class="z">
-            <h2>robo legal</h2>
-            <img src="d.png" width="256px">
-            <p>microondas que come arroz e canta</p>
-            <h4><span class="preco"> R$ 0 (shareware) </span></h4>
-            <button onclick="location='http://utau2008.xrea.jp'">comprar</button>
-        </div>
-        <div class="z">
-            <h2>robo legal</h2>
-            <img src="d.png" width="256px">
-            <p>microondas que come arroz e canta</p>
-            <h4><span class="preco"> R$ 0 (shareware) </span></h4>
-            <button onclick="location='http://utau2008.xrea.jp'">comprar</button>
-        </div>
-    </div>
+        <footer>
+            mijei nas carça
+        </footer>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $('#bosta').on('click',()=>{
+            location = 'http://utau2008.xrea.jp'
+        })
+        $('#sreo').on('click',()=>{
+            location = 'https://www.youtube.com/watch?v=6PUjDH50C6c'
+        })
+        $("#legal").on('click',()=>{
+            alert("A".repeat(1000))
+        })
+        $('#dois').on('click',()=>{
+            alert('humor e travessuras')
+        })
+        $('#g').on('click',()=>{
+            $('main').addClass('sumiu')
+        })
+    </script>
 </body>
 </html>
