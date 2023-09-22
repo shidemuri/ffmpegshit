@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
+    
+    <style>
+        * {
+            color:white;
+            font-family: 'Roboto', sans-serif ;
+        }
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+        .hcenter {
+            left:0;
+            right:0;
+            margin-left: auto;
+            margin-right:auto;
+        }
+        #content{
+            width:500px;
+            height:500px;
+            position:absolute;
+            top:50%;
+            transform:translate(0,-50%);
+            background-color:rgb(29, 29, 29);
+        }
+        #title{
+            text-align: center;
+            font-size: 20px;
+        }
+        header {
+            display:flex;
+            align-items:center;
+            height:90px;
+        }
+        #key {
+            color:black;
+        }
+        .dropzone {
+            width:90%;
+            min-height:35px;
+            border: 2px white solid;
+            border-radius: 5px;
+            background-color: transparent;
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <div class="hcenter" id="content">
+            <header>
+                <p class="hcenter" id="title">private file uploader</p>
+            </header>
+            <content>
+                <p>
+                    <div class="dropzone hcenter">
+                        <img src="file:///H:/d.jpg" id="preview">
+                    </div>
+                </p>
+                <input type="text" placeholder="upload key" id="key">
+            </content>
+        </div>
+    </main>
+</body>
+</html>
