@@ -71,7 +71,7 @@ ff.on('end', async()=>{
                 test = ''
                 //opt = opt + `\n<!--\n${JSON.stringify((()=>{const f = {length:e.getTotalLength(),parts:e.getParts()}; return f})(),null,4)}\n-->`
                 for(const o of e.getParts()) {
-                    test += Object.values(o.start).map(e=>bytecompress ? String.fromCharCode(Math.floor(e)+128) : (floor ? Math.floor(e) : Math.trunc(e*100)/100)).join(bytecompress ? '' : ',')+(bytecompress ? '' : '@')+Object.values(o.end).map(e=>bytecompress ? String.fromCharCode(Math.floor(e)+128) : (floor ? Math.floor(e) : Math.trunc(e*100)/100)).join(bytecompress ? '' : ',')+(bytecompress ? '' : '|')
+                    test += Object.values(o.start).map(e=>bytecompress ? String.fromCharCode(Math.floor(e)+32) : (floor ? Math.floor(e) : Math.trunc(e*100)/100)).join(bytecompress ? '' : ',')+(bytecompress ? '' : '@')+Object.values(o.end).map(e=>bytecompress ? String.fromCharCode(Math.floor(e)+32) : (floor ? Math.floor(e) : Math.trunc(e*100)/100)).join(bytecompress ? '' : ',')+(bytecompress ? '' : '|')
                 }
                 if(!bytecompress) {
                     test = test.split('')

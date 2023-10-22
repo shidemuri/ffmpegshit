@@ -10,7 +10,7 @@ function strgen(){
     return str
 }
 
-const tonescale = `1111100000`.split('')
+const tonescale = `0000011111`.split('')
 const possibilities = [256,230,220,200,180,160,140,130,120,100].reverse()
 
 let basestr = ''
@@ -20,7 +20,7 @@ const ss = strgen()
 console.log('Preparing video...')
 const ff = new ffmpeg(path.resolve(__dirname,`./input.mp4`))
 ff.noAudio()
-ff.size('56x22')
+ff.size('15x8')
 ff.fps(20)
 //ff.format('mp4')
 ff.addOptions(['-crf 18','-hide_banner'])
@@ -47,7 +47,7 @@ ff.on('end', async()=>{
                             }
                         }
                     }
-                    thing += '|'
+                    //thing += '|'
                 }
                 basestr += thing + '\n'
                 res()

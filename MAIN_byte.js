@@ -1,3 +1,7 @@
+const PIXELINCREMENT = 1
+
+
+
 const ffmpeg = require('fluent-ffmpeg')
 const PNG = require('pngjs').PNG;
 const fs = require('fs')
@@ -10,34 +14,12 @@ function strgen(){
     return str
 }
 
-const blocks = {
-    "▀":[1,0],
-    "▄":[0,1],
-    "█":[1,1],
-    " ":[0,0]
-}
-
-/*const tonescale = `0000011111`.split('')
-const possibilities = [256,230,220,200,180,160,140,130,120,100].reverse()*/
-
-let basestr = ''
-function eq(a, b) {
-    if (a === b) return true;
-    if (a == null || b == null) return false;
-    if (a.length !== b.length) return false;
-  
-    for (var i = 0; i < a.length; ++i) {
-      if (a[i] !== b[i]) return false;
-    }
-    return true;
-  }
-
 const ss = strgen()
 console.log('Preparing video...')
-const ff = new ffmpeg(path.resolve(__dirname,`./i.png`))
+const ff = new ffmpeg(path.resolve(__dirname,`./input14.mp4`))
 ff.noAudio()
-ff.size('64x64')
-ff.fps(5)
+ff.size('32x32')//ff.size('90x45')//
+ff.fps(10)
 //ff.format('mp4')
 ff.addOptions(['-crf 18','-hide_banner'])
 ff.save(path.resolve(__dirname,`./ohlord/temp_${ss}_%d.png`))
@@ -54,26 +36,20 @@ ff.on('end', async()=>{
             fs.createReadStream(filez)
             .pipe(new PNG())
             .on('parsed', function() {
-                for (let y = 0; y < this.height; y=y+2) {
-                    for (let x = 0; x < this.width; x++) {
-                        let idx = (this.width * y + x) << 2; // (black - white / 0 - 255)(directly taken from the docs lmao)
-                        let idx2 = (this.width * (y+1) + x) << 2;
-                        for(const [k,v] of Object.entries(blocks)){
-                            if(eq(v,[
-                                Number(!((this.data[idx]+this.data[idx+1]+this.data[idx+2])/3<170)),
-                                Number(!((this.data[idx2]+this.data[idx2+1]+this.data[idx2+2])/3<170)),
-                            ])) thing += k
-                        }
-                    }
-                    thing += '|'
+                const frame = [...this.data].filter((_,i)=>(i+1)%4)
+                let i = 0;
+                while(i<frame.length){
+                    if(i > 0 && (i/3)%this.width==0) thing += ' '
+                    thing += String.fromCharCode(frame[i]+255)
+                    i++
                 }
-                basestr += thing + '\n'
+                test.push(thing)
                 res()
             })
             .on('error',e=>err(e))
         })
     }
-    fs.writeFileSync(path.resolve(__dirname,`./videodatae.txt`),basestr)
+    fs.writeFileSync(path.resolve(__dirname,`./videodatae.txt`),test.join('\n'))
     //if(err) return console.log('uploader error: ' + err) //{files:[{attachment:path.resolve(__dirname,`./ohlord/temp_${ss}.zip`),name:'generatedvideo.zip'}]}
     console.log('extract the text file to the exploit\'s workspace folder before executing the script')
     fs.unlink(path.resolve(__dirname,`./ohlord/temp_${ss}.zip`),()=>{})

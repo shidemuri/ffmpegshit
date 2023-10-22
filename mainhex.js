@@ -1,4 +1,4 @@
-const PIXELINCREMENT = 1
+const PIXELINCREMENT = 5
 
 
 
@@ -65,7 +65,7 @@ const ss = strgen()
 console.log('Preparing video...')
 const ff = new ffmpeg(path.resolve(__dirname,`./h3.mp4`))
 ff.noAudio()
-ff.size('224x96')
+//ff.size('224x96')
 ff.fps(20)
 //ff.format('mp4')
 ff.addOptions(['-crf 18','-hide_banner'])
@@ -77,6 +77,7 @@ ff.on('end', async()=>{
     })
     const test = []
     for(let i = 0;i<f.length;i++){
+        console.log(`${i+1}/${f.length}`)
         let filez = path.resolve(__dirname,'ohlord/temp_'+ss+'_'+(i+1)+'.png')
         await new Promise((res,err)=>{
             let thing = ""

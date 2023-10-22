@@ -1,13 +1,7 @@
 // a fucking piano
-// https://paderos-neko.store
-//    library   -     what is it        - what i use it for
-//
-// @tonejs/midi - midi to json for tone - midi parser
-// tone         - webaudio framework    - get scale from 'midi' note
-//
 
 const TRANSPOSITION = 1         //how many pitches to shift down
-const NOTES_DOWN = 0           //how many notes to round down (stacks with transposition)
+const NOTES_DOWN = 0           //how many notes to shift down (stacks with transposition) (why? idk i dont speak music)
 const IGNORE_BLACK_NOTES = false
 const ROUND_BLACK_NOTES = false
 
