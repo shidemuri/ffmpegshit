@@ -1,8 +1,8 @@
 //https://text.caltrop.dev
 
 const SETTINGS = {
-    x: -14770,
-    y: 85
+    x: -15120,
+    y: 70
 }
 const fs = require('fs')
 const data = (fs.readFileSync('videodatae.txt')+``).split('\n').map(v=>v.split('|'))
@@ -119,7 +119,7 @@ const charToCode = (char, fg = Letter.defaultForeground, bg = Letter.defaultBack
             if(msg.includes('patch') || msg == 'r') {
                 ws.close()
                 connected = false
-                console.log(`inftext bot\ncurrent ws puppet: ${puppet++}\ndraw stack size: ${drawstack.length}\nspeed: ${(85/((performance.now()-started)/1000)).toFixed(2)} chars/s\ntime between payloads: ${(performance.now()-started).toFixed(2)}ms\n\n\x1b[?25l`)
+                console.log(`inftext bot\ncurrent ws puppet: ${puppet++}\ndraw stack size: ${drawstack.length}\nspeed: ${(85/((performance.now()-started)/1000)).toFixed(2)} chars/s\ntime between payloads: ${(performance.now()-started).toFixed(2)}ms\n\n`)
                 started = performance.now()
             }else if(bin){
                 if(drawstack.length > 0 && connected) {

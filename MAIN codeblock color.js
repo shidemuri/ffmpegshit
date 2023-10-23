@@ -1,6 +1,8 @@
 const PIXELINCREMENT = 1
 
-
+let file = process.argv.slice(2)[0] ?? 'input.mp4'
+let size = process.argv.slice(2)[1]
+let fps = process.argv.slice(2)[2]
 
 const ffmpeg = require('fluent-ffmpeg')
 const PNG = require('pngjs').PNG;
@@ -43,10 +45,11 @@ function strgen(){
 
 const ss = strgen()
 console.log('Preparing video...')
-const ff = new ffmpeg(path.resolve(__dirname,`./input.mp4`))
+const ff = new ffmpeg(path.resolve(__dirname,file))
 ff.noAudio()
-ff.size('12x6')//ff.size('90x45')//
-ff.fps(1)
+if(size) ff.size(size)
+//ff.size('12x6')//ff.size('90x45')//
+ff.fps(!isNaN(Number(fps)) ? fps : 20)
 //ff.format('mp4')
 ff.addOptions(['-crf 18','-hide_banner'])
 ff.save(path.resolve(__dirname,`./ohlord/temp_${ss}_%d.png`))
