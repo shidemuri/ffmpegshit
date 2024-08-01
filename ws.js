@@ -4,7 +4,6 @@ const socket = new ws('wss://text.caltrop.dev:1312/')
 
 socket.onmessage = (event) =>{
     console.log(event.data)
-}
 const chars = "⠀⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏⠐⠑⠒⠓⠔⠕⠖⠗⠘⠙⠚⠛⠜⠝⠞⠟⠠⠡⠢⠣⠤⠥⠦⠧⠨⠩⠪⠫⠬⠭⠮⠯⠰⠱⠲⠳⠴⠵⠶⠷⠸⠹⠺⠻⠼⠽⠾⠿"
 
 const getChar = (char) => {

@@ -5,4 +5,4 @@ setInterval(function(){
     i++
     if(!file[i]) clearInterval(this)
     console.log(file[i].split('|').join('\n')+'\n'+i)
-},1/5*1000)
+},1/20*1000)

@@ -10,11 +10,18 @@ function strgen(){
     return str
 }
 
-const blocks = {
+/*const blocks = {
     "▀":[1,0],
     "▄":[0,1],
     "█":[1,1],
     " ":[0,0]
+}*/
+
+const blocks = {
+    "▀":[0,1],
+    "▄":[1,0],
+    "█":[0,0],
+    "░":[1,1]
 }
 
 /*const tonescale = `0000011111`.split('')
@@ -34,10 +41,10 @@ function eq(a, b) {
 
 const ss = strgen()
 console.log('Preparing video...')
-const ff = new ffmpeg(path.resolve(__dirname,`./i.png`))
+const ff = new ffmpeg(path.resolve(__dirname,`./input.mp4`))
 ff.noAudio()
-ff.size('64x64')
-ff.fps(5)
+ff.size('13x7')
+ff.fps(20)
 //ff.format('mp4')
 ff.addOptions(['-crf 18','-hide_banner'])
 ff.save(path.resolve(__dirname,`./ohlord/temp_${ss}_%d.png`))

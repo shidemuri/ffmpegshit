@@ -20,7 +20,7 @@ const ss = strgen()
 console.log('Preparing video...')
 const ff = new ffmpeg(path.resolve(__dirname,`./input.mp4`))
 ff.noAudio()
-ff.size('15x8')
+ff.size('32x32')
 ff.fps(20)
 //ff.format('mp4')
 ff.addOptions(['-crf 18','-hide_banner'])
@@ -30,6 +30,7 @@ ff.on('end', async()=>{
     const f = (await fs.promises.readdir(path.join(__dirname,'ohlord'))).filter(f=>{
         return f.endsWith('.png') && f.startsWith(`temp_${ss}`)
     })
+    console.log(f.length)
     for(let i = 0;i<f.length;i++){
         let filez = path.resolve(__dirname,'ohlord/temp_'+ss+'_'+(i+1)+'.png')
         await new Promise((res,err)=>{
@@ -39,9 +40,9 @@ ff.on('end', async()=>{
             .on('parsed', function() {
                 for (let y = 0; y < this.height; y++) {
                     for (let x = 0; x < this.width; x++) {
-                        let idx = (this.width * y + x) << 2; // (black - white / 0 - 255)(directly taken from the docs lmao)
+                        let idx = (this.width * y + x) << 2; // (black - white / 0 - 255)(directly taken from the docs lmao) (ermmm actually it only takes the red channel into)
                         for(const idx2 in possibilities) {
-                            if(this.data[idx] < possibilities[idx2]) {
+                            if((this.data[idx]+this.data[idx+2]+this.data[idx+2])/3 < possibilities[idx2]) {
                                 thing += tonescale[idx2]
                                 break
                             }
@@ -49,7 +50,7 @@ ff.on('end', async()=>{
                     }
                     //thing += '|'
                 }
-                basestr += thing + '\n'
+                basestr += thing //+ '\n'
                 res()
             })
             .on('error',e=>err(e))

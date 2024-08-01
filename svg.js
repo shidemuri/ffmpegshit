@@ -1,5 +1,5 @@
 const edgedetection = false //only use when image isnt black and white
-const floor = true
+const floor = false
 const bytecompress = true
 
 
@@ -39,15 +39,15 @@ const ss = strgen()
 console.log('Preparing video...')
 const ff = new ffmpeg(path.resolve(__dirname,`./input.mp4`))
 ff.noAudio()
-ff.size('127x127')//ff.size('480x360')
-ff.fps(20)
+//ff.size('127x127')//ff.size('480x360')
+//ff.fps(20)
 //ff.format('mp4')
 ff.addOptions(['-crf 18','-hide_banner'])
-ff.save(path.resolve(__dirname,`./ohlord/temp_${ss}_%d.png`))
+ff.save(path.resolve(__dirname,`./ohlord/temp_${ss}_%d.bmp`))
 ff.on('end', async()=>{
     //let old = 0
     console.log('Converting video frames...')
-    const f = (await fs.promises.readdir(path.join(__dirname,'ohlord'))).filter(f=>f.endsWith('.png') && f.startsWith(`temp_${ss}`))
+    const f = (await fs.promises.readdir(path.join(__dirname,'ohlord'))).filter(f=>f.endsWith('.bmp') && f.startsWith(`temp_${ss}`))
     let test = ''
     let test2 = []
     if(edgedetection) {
@@ -59,14 +59,21 @@ ff.on('end', async()=>{
         await exec('python canny.py')
     }
     for(let i = 0;i<f.length;i++){
-        let filez = path.resolve(__dirname,'ohlord/temp_'+ss+'_'+(i+1)+'.png')
+        let filez = path.resolve(__dirname,'ohlord/temp_'+ss+'_'+(i+1)+'.bmp')
         console.clear()
         console.log(`Converting SVG path into points array\n${edgedetection ? 'seems like edge detection mode is on. it may take longer to convert.\n' : ''}current/total\n${i+1}/${f.length}`/*\nframes per second: ${((performance.now()-old)).toFixed(2)}`*/)
         //old = performance.now()
         /*test.push*/await new Promise((res,rej)=>{
-            potrace.trace(filez,async (err,svg)=>{
+            potrace.trace(filez,{optCurve:false,optTolerance:0, alphaMax: 0.5},async (err,svg)=>{
                 if(err) rej(err)
-                let opt = svgo.optimize(svg).data
+                let opt = svgo.optimize(svg,{
+                    multipass: true,
+                    floatPrecision: 3,
+                    plugins: [
+                        { name: 'removeViewBox', active: false },
+                        { name: 'removeUselessStrokeAndFill', active: false }
+                    ]
+                }).data
                 const e = new pathdata.svgPathProperties(svgparse.parse(opt).children[0].children[0]?.properties?.d || {getParts:()=>[{start:{}}],getTotalLength:()=>0});
                 test = ''
                 //opt = opt + `\n<!--\n${JSON.stringify((()=>{const f = {length:e.getTotalLength(),parts:e.getParts()}; return f})(),null,4)}\n-->`
