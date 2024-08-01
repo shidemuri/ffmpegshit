@@ -1,8 +1,13 @@
 *.mp4
+*.wav
+*.webm
+*.mp3
+*.pcm
 *.mid
 *.html
 *.svg
 *.png
+*.jpg
 *.midi
 package-lock.json
 *.txt
@@ -14,3 +19,4 @@ package-lock.json
 /frames
 /.vscode
 /ohlord
+/client
