@@ -1,4 +1,5 @@
 # ffmpegshit
+# please change all instances of the string "onigirya.paderos-neko.shop" to "host.grace-feet.pics" cuz the old domain expired yeah
 
 To install dependencies:
 
